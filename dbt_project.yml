@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'jaffle_shop'
+name: 'my_fabric_project'
 version: '1.0.0'
 config-version: 2
 
@@ -33,10 +33,19 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  jaffle_shop:
+  my_fabric_project:
     staging:
       +materialized: view
     marts:
       +materialized: table
 
-    
+seeds:
+  my_fabric_project:
+    raw_orders:
+      +column_types:
+        _etl_loaded_at: "datetime2(6)"
+    raw_payments:
+      +column_types:
+        _batched_at: "datetime2(6)"
+
+
